@@ -8,12 +8,6 @@ import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 
-/**
- * Servidor de chat bloqueante utilizando
- * a API NIO.2 do Java 7.
- *
- * @author Manoel Campos da Silva Filho
- */
 public class Server {
     public static final int PORT = 4000;
     public static final String HOSTNAME = "127.0.0.1";
@@ -21,8 +15,6 @@ public class Server {
 
     public Server() throws IOException {
         serverChannel = ServerSocketChannel.open();
-        /*O retorno do método só é util em um ambiente non-blocking (não bloqueante).
-         * O padrão é blocking.*/
         serverChannel.configureBlocking(true);
         serverChannel.bind(new InetSocketAddress(HOSTNAME, PORT));
         System.out.println("Servidor iniciado no endereço " + HOSTNAME + " na porta " + PORT);
