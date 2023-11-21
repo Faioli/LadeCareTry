@@ -8,24 +8,13 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 import java.util.Scanner;
 
-/**
- * @author Manoel Campos da Silva Filho
- */
 public class Cliente {
     private final Scanner scanner;
     private SocketChannel clientChannel;
 
     public Cliente() throws IOException {
         clientChannel = SocketChannel.open();
-
-        /*No cliente usa-se connect e não bind.
-        O bind é pra dizer qual porta local o cliente vai usar.
-        Se isso não for feito, o SO decide qual porta usar.
-        O cliente precisa de uma porta local para permitir que o servidor,
-        após receber a conexão na porta 4000,
-        passe a atender o cliente numa porta diferente
-        enquanto aceita novas conexões na porta 4000.
-        */
+ 
         clientChannel.connect(new InetSocketAddress(HOSTNAME, PORT));
         scanner = new Scanner(System.in);
     }
